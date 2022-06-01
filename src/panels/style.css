@@ -1,0 +1,42 @@
+body{
+	background: #bde0ff;
+}
+.attempt, .attempt-submit, .attempt-textarea, .title{
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+}
+.attempt-submit{
+	font-size: 20px;
+    background: yellow;
+    border-radius: 7px; 
+    border: solid 2px yellow;  
+    height: 36px;
+    width: 40%;
+}
+.attempt{
+	background: greenyellow;
+	height: 36px;
+	width: 40%;
+	color: green;
+	font-size: 25px;
+	border-radius: 7px;
+	border: solid 2px yellow;
+	text-align:center; 
+}
+.title{
+	font-size: 36px;
+	color: yellow;
+	font-weight: bold;
+}
+.attempt-textarea{
+  background: greenyellow;
+  width: 90%;
+  height: 150px;
+  color: green;
+  font-size: 25px;
+  border-radius: 7px;
+  border: solid 2px yellow;
+  padding-bottom: 5px;
+  resize: none;
+} 
