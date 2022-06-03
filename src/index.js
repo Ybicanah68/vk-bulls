@@ -33,28 +33,42 @@ class CowsAndBulls extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    /*this.props.onAttemptSubmit({
-      attempt: this.state.attempt.trim(),
-    });*/
-
+    console.log(this.state.rand);
+    const randArray = this.state.rand.split('');
+    const attemptArray = this.state.attempt.split('');
+    const resultArray = this.compareArrays(randArray, attemptArray);
+    if(resultArray.exact == 4){
+      alert("Победа!");
+    }
     this.setState(() => ({
      attempt: "",
-     story: this.state.attempt? this.state.story + this.state.attempt + '\n' : this.state.story + '',
+     story: this.state.attempt? this.state.story + "Коров:" + resultArray.values + " Быков:" + resultArray.exact + '\n' : this.state.story + '',
     }));
   }
   randFunk(){
-    var nums = [1,2,3,4,5,6,7,8,9,10],
-        ranNums = [],
-        i = nums.length,
-        j = 0;
-
-    while (i--) {
-        j = Math.floor(Math.random() * (i+1));
-        ranNums.push(nums[j]);
-        nums.splice(j,1);
-    }
-    console.log(nums);
-    return nums;
+    const base = [1,2,3,4,5,6,7,8,9,0];
+    this.shuffleArray(base);
+    const result = base.slice(0,4);
+    const resultString = result.join("");
+    return resultString;
+  }
+  shuffleArray(array){
+      for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]]
+      }
+  }
+  compareArrays(firstArray, secondArray){
+      let values = 0;
+      let exact = 0;
+      firstArray.forEach(digit => {
+          if (secondArray.indexOf(digit)!==-1) {
+              if (secondArray.indexOf(digit) === firstArray.indexOf(digit)) {
+                exact++;
+              } else values++;
+          }
+      });
+      return {values, exact};
   }
   render() {
     return React.createElement(
