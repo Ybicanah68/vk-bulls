@@ -42,7 +42,7 @@ class CowsAndBulls extends React.Component {
     }
     this.setState(() => ({
      attempt: "",
-     story: this.state.attempt? this.state.story + "Коров:" + resultArray.values + " Быков:" + resultArray.exact + '\n' : this.state.story + '',
+     story: this.state.attempt? this.state.story + this.state.attempt + ": Коровы:" + resultArray.values + " Быки:" + resultArray.exact + '\n' : this.state.story + '',
     }));
   }
   randFunk(){

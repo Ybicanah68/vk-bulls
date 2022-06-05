@@ -1,5 +1,6 @@
 body{
 	background: #bde0ff;
+	padding-top: 50px;
 }
 .attempt, .attempt-submit, .attempt-textarea, .title{
 	display: block;
