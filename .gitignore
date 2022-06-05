@@ -1,3 +1,11 @@
 build/*
 node_modules/*
 build.zip
+build.zip
+build/asset-manifest.json
+build/index.html
+build/static/css/main.2d10238b.chunk.css
+build/static/css/main.2d10238b.chunk.css.map
+build/static/js/main.f555538e.chunk.js
+build/static/js/main.f555538e.chunk.js.map
+node_modules/.cache/.eslintcache
