@@ -26,13 +26,25 @@ class CowsAndBulls extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleAttemptChange(event) {
-    const val = event.target.value.replace(/\D/g, "");
+    let val = event.target.value.replace(/\D/g, "");
+
+    if(event.target.value.length>4){
+      val = event.target.value.slice(0, -1);
+      alert("Введите число из 4 цифр");
+    }
+
+    if(this.validate2(event.target.value)){
+     val = event.target.value.slice(0, -1);
+     alert("Цифры не должны повторяться"); 
+    }
+
     this.setState(() => ({
       attempt: val
     }));
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.state.attempt? this.validate1(this.state.attempt) : alert("Введите число");
     console.log(this.state.rand);
     const randArray = this.state.rand.split('');
     const attemptArray = this.state.attempt.split('');
@@ -70,6 +82,20 @@ class CowsAndBulls extends React.Component {
       });
       return {values, exact};
   }
+  validate1(digits){
+    if (digits.length !=4){
+      alert("Введите число из 4 цифр");
+    }
+  }
+  validate2(digits){
+    let i = 0;
+    for(i=0; i < digits.length; i++) {
+      if (digits.split(digits[i]).length-1 > 1) {
+        return true;
+      }  
+    }
+    return false;
+  }
   render() {
     return React.createElement(
       "form",
@@ -97,7 +123,7 @@ class CowsAndBulls extends React.Component {
         readOnly: "readOnly",
         placeholder: "Ваши попытки",
         value: this.state.story,
-      })
+      }),
     );
   }
 }
